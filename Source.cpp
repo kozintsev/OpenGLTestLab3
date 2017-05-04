@@ -96,6 +96,7 @@ void reshape(int w, int h)
 	glMatrixMode(GL_MODELVIEW);
 }
 
+// поворот на 45 градусов
 void DrawRotated()
 {
 	GLubyte * OneBit;
@@ -121,7 +122,8 @@ void DrawRotated()
 	}
 }
 
-void DrawRotatedtask()
+//Полиноминальное преобразование
+void DrawPolynomialTransformation()
 {
 	std::cout << "Start rotating" << std::endl;
 	GLubyte * OneBit;
@@ -146,12 +148,14 @@ void DrawRotatedtask()
 	}
 	std::cout << "Roteted" << std::endl;
 }
-void DrawRotatedinterpol()
+
+// нарисовать повернутую с помощью интерполяции (изображение получается без отверстий)
+void DrawInterpolatedTransformation()
 {
 	std::cout << "Start rotating" << std::endl;
 	GLubyte * OneBit;
 	OneBit = new GLubyte[3];
-	GLfloat F = 45.0*(M_PI / 180);
+	GLfloat F = 45.0 * ( M_PI / 180 );
 
 	for (int x = 0; x != 282; x++)
 	{
@@ -185,8 +189,8 @@ void LoadTexture()
 	if (isLoadError) return;
 	DrawBMP();
 	DrawRotated();
-	DrawRotatedtask();
-	DrawRotatedinterpol();
+	DrawPolynomialTransformation();
+	DrawInterpolatedTransformation();
 	glFlush();
 	delete[] TxBits;
 }
