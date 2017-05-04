@@ -99,14 +99,15 @@ void reshape(int w, int h)
 // поворот на 45 градусов
 void DrawRotated()
 {
+	GLfloat F;
+	F = 45.0 * (M_PI / 180);
+	GLfloat X, Y, X1, Y1;
 	GLubyte * OneBit;
 	OneBit = new GLubyte[3];
 	for (int x = 0; x != 200; x++)
 	{
 		for (int y = 0; y != 200; y++)
 		{
-			GLfloat X, Y, X1, Y1, F;
-			F = 45.0 * ( M_PI / 180 );
 			X = (GLfloat)y;
 			Y = (GLfloat)x;
 			X1 = X * cos(F) - Y * sin(F);
@@ -128,12 +129,12 @@ void DrawPolynomialTransformation()
 	std::cout << "Start rotating" << std::endl;
 	GLubyte * OneBit;
 	OneBit = new GLubyte[3];
+	GLfloat X, Y, X1, Y1, F;
+	F = 45.0*(M_PI / 180);
 	for (int x = 0; x != 200; x++)
 	{
 		for (int y = 0; y != 200; y++)
 		{
-			GLfloat X, Y, X1, Y1, F;
-			F = 45.0*(M_PI / 180);
 			X = (GLfloat)y;
 			Y = (GLfloat)x;
 			X1 = ((1.1 * X) - (0.2 * Y)) / ((0.0075 * X) + (0.0005 * Y) + 1);
@@ -156,12 +157,12 @@ void DrawInterpolatedTransformation()
 	GLubyte * OneBit;
 	OneBit = new GLubyte[3];
 	GLfloat F = 45.0 * ( M_PI / 180 );
+	GLfloat Y, X, X1, Y1;
 
 	for (int x = 0; x != 282; x++)
 	{
 		for (int y = 141; y != 282 + 141; y++)
 		{
-			GLfloat Y, X, X1, Y1;
 
 			X1 = (GLfloat)x;
 			Y1 = (GLfloat)y;
