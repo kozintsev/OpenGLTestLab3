@@ -47,7 +47,7 @@ void LoadBmp()
 		isLoadError = true;
 		return;
 	}
-	ReadFile(FileHandle, &bfh, sizeof(bfh), &nBytesRead, NULL); //считываем первый заголовок, вообще то он не нужен
+	ReadFile(FileHandle, &bfh, sizeof(bfh), &nBytesRead, NULL); //считываем первый заголовок, он не нужен
 	ReadFile(FileHandle, &bih, sizeof(bih), &nBytesRead, NULL); //считываем второй заголовок
 	// записываем размер рисунка
 	width = bih.biWidth;
@@ -56,7 +56,7 @@ void LoadBmp()
 	TxBits = new GLubyte[width*height * 3]; // выделяем память для получаемого рисунка
 	ReadFile(FileHandle, buf, (width*height * 3), &nBytesRead, NULL); //считываем данные о цветах пикселей
 	// в этом цикле меняем структуру цвета, т.к. BMP файл имеет структуру BGR, а нам нужен RGB
-	for (int i = 0; i<(width*height * 3); i += 3)
+	for (int i = 0; i < width * height * 3; i += 3)
 	{
 		//переписываем массив цветов
 		TxBits[i] = buf[i + 2];
@@ -67,8 +67,7 @@ void LoadBmp()
 	glBindTexture(GL_TEXTURE_2D, num_tex);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-		width, height, // размер текстуры
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, // размер текстуры
 		0, GL_RGB, GL_UNSIGNED_BYTE, TxBits);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	CloseHandle(FileHandle); // закрываем файл
@@ -184,8 +183,8 @@ void LoadTexture()
 	if (isLoadError) return;
 	DrawBMP();
 	DrawRotated();
-	//DrawRotatedtask();
-	//DrawRotatedinterpol();
+	DrawRotatedtask();
+	DrawRotatedinterpol();
 	glFlush();
 	delete[] TxBits;
 }
