@@ -13,7 +13,6 @@ LPCWSTR convert(const char * cs)
 {
 	size_t size = strlen(cs) + 1;
 	wchar_t* wn = new wchar_t[size];
-
 	size_t outSize;
 	mbstowcs_s(&outSize, wn, size, cs, size - 1);
 	return wn;
@@ -87,6 +86,7 @@ void init(void)
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 }
+
 void reshape(int w, int h)
 {
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
@@ -95,6 +95,7 @@ void reshape(int w, int h)
 	glOrtho(0, w, 0, h, -1.0, 1.0);
 	glMatrixMode(GL_MODELVIEW);
 }
+
 void DrawRotated()
 {
 	GLubyte * OneBit;
@@ -177,6 +178,7 @@ void DrawRotatedinterpol()
 	}
 	std::cout << "Roteted" << std::endl;
 }
+
 void LoadTexture()
 {
 	LoadBmp();
@@ -189,12 +191,11 @@ void LoadTexture()
 	delete[] TxBits;
 }
 
-
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	glutInitWindowSize(640, 640);
+	glutInitWindowSize(800, 600);
 	glutCreateWindow("Drawing a Bitmapped Character");
 	init();
 	glutDisplayFunc(LoadTexture);
