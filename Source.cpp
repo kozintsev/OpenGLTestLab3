@@ -42,7 +42,7 @@ void LoadBmp()
 		NULL); // шаблона атрибутов нет
 	if (FileHandle == INVALID_HANDLE_VALUE) // если ошибка при открытии то сообщаем
 	{
-		MessageBox(NULL, convert("Файл отсутствует!"), convert("Ошибка"), MB_OK | MB_ICONINFORMATION);
+		MessageBox(NULL, convert("File not found"), convert("Error"), MB_OK | MB_ICONINFORMATION);
 		isLoadError = true;
 		return;
 	}
@@ -137,9 +137,9 @@ void DrawPolynomialTransformation()
 		{
 			X = (GLfloat)y;
 			Y = (GLfloat)x;
-			X1 = ((1.1 * X) - (0.2 * Y)) / ((0.0075 * X) + (0.0005 * Y) + 1);
-			Y1 = ((0.1 * X) + (0.9 * Y)) / ((0.0075 * X) + (0.0005 * Y) + 1);
-			glRasterPos2i(X1 + 100, Y1 + 350);
+			X1 = ((1.1 * X) - (0.2 * Y)) / ((0.0022 * X) + (0.0002 * Y) + 1);
+			Y1 = ((0.1 * X) + (0.9 * Y)) / ((0.0022 * X) + (0.0002 * Y) + 1);
+			glRasterPos2i(X1 + 100, Y1 + 250);
 			int t = x * 200 * 3 + y * 3;
 			OneBit[0] = TxBits[t];
 			OneBit[1] = TxBits[t + 1];
