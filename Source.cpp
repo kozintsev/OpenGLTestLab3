@@ -96,92 +96,22 @@ void reshape(int w, int h)
 	glMatrixMode(GL_MODELVIEW);
 }
 
-// поворот на 45 градусов
+// поворот
 void DrawRotated()
 {
-	GLfloat F;
-	F = 45.0 * (M_PI / 180);
-	GLfloat X, Y, X1, Y1;
-	GLubyte * OneBit;
-	OneBit = new GLubyte[3];
-	for (int x = 0; x != 200; x++)
-	{
-		for (int y = 0; y != 200; y++)
-		{
-			X = (GLfloat)y;
-			Y = (GLfloat)x;
-			X1 = X * cos(F) - Y * sin(F);
-			Y1 = X * sin(F) + Y * cos(F);
-			// смещение
-			glRasterPos2i(X1 + 350, Y1);
-			int t = x * 200 * 3 + y * 3;
-			OneBit[0] = TxBits[t];
-			OneBit[1] = TxBits[t + 1];
-			OneBit[2] = TxBits[t + 2];
-			glDrawPixels(1, 1, GL_RGB, GL_UNSIGNED_BYTE, OneBit);
-		}
-	}
+	
 }
 
 //Полиноминальное преобразование
 void DrawPolynomialTransformation()
 {
-	std::cout << "Start rotating" << std::endl;
-	GLubyte * OneBit;
-	OneBit = new GLubyte[3];
-	GLfloat X, Y, X1, Y1, F;
-	F = 45.0*(M_PI / 180);
-	for (int x = 0; x != 200; x++)
-	{
-		for (int y = 0; y != 200; y++)
-		{
-			X = (GLfloat)y;
-			Y = (GLfloat)x;
-			X1 = ((1.1 * X) - (0.2 * Y)) / ((0.0075 * X) + (0.0005 * Y) + 1);
-			Y1 = ((0.1 * X) + (0.9 * Y)) / ((0.0075 * X) + (0.0005 * Y) + 1);
-			glRasterPos2i(X1 + 100, Y1 + 350);
-			int t = x * 200 * 3 + y * 3;
-			OneBit[0] = TxBits[t];
-			OneBit[1] = TxBits[t + 1];
-			OneBit[2] = TxBits[t + 2];
-			glDrawPixels(1, 1, GL_RGB, GL_UNSIGNED_BYTE, OneBit);
-		}
-	}
-	std::cout << "Roteted" << std::endl;
+	
 }
 
 // нарисовать повернутую с помощью интерполяции (изображение получается без отверстий)
 void DrawInterpolatedTransformation()
 {
-	std::cout << "Start rotating" << std::endl;
-	GLubyte * OneBit;
-	OneBit = new GLubyte[3];
-	GLfloat F = 45.0 * ( M_PI / 180 );
-	GLfloat Y, X, X1, Y1;
-
-	for (int x = 0; x != 282; x++)
-	{
-		for (int y = 141; y != 282 + 141; y++)
-		{
-
-			X1 = (GLfloat)x;
-			Y1 = (GLfloat)y;
-			Y = X1 * cos(-F) - Y1 * sin(-F);
-			X = X1 * sin(-F) + Y1 * cos(-F);
-
-			if (Y >= 200 && Y <= 400)
-				if (X >= 0 && X <= 200)
-				{
-					glRasterPos2i(X1 + 200, Y1 + 200);
-					int t = (int)X * 200 * 3 + (int)Y * 3;
-					OneBit[0] = TxBits[t];
-					OneBit[1] = TxBits[t + 1];
-					OneBit[2] = TxBits[t + 2];
-					glDrawPixels(1, 1, GL_RGB, GL_UNSIGNED_BYTE, OneBit);
-				}
-		}
-	}
-	std::cout << "Roteted" << std::endl;
+	
 }
 
 void LoadTexture()
