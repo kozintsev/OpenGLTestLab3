@@ -106,7 +106,7 @@ void DrawRotated()
 		for (int y = 0; y != 200; y++)
 		{
 			GLfloat X, Y, X1, Y1, F;
-			F = 45.0*(M_PI / 180);
+			F = 45.0 * ( M_PI / 180 );
 			X = (GLfloat)y;
 			Y = (GLfloat)x;
 			X1 = X * cos(F) - Y * sin(F);
